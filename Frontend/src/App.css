@@ -1,0 +1,24 @@
+.dpmenu {
+  margin-left: -100px;
+}
+@media (max-width: 768px) {
+  .dpmenu {
+    margin-left: 0 !important;
+  }
+}
+/*AdminSideNavbar*/
+.sidebar-dropdown .nav-link {
+  border-radius: 8px;
+  transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.sidebar-dropdown .nav-link:hover {
+  background-color: rgb(246, 246, 246);
+  padding-left: 1.25rem;
+  color: black !important;
+}
+
+.sidebar-dropdown .nav-link.active {
+  background-color: rgb(245, 244, 244);
+  font-weight: bold;
+}
