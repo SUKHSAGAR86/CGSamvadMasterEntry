@@ -73,60 +73,56 @@ const App = () => {
 
         {/* //Grouped Protected Routes */}
 
-        <Route element={<ProtectedRoute />}>
+      <Route element={<ProtectedRoute />}>
+  <Route path="/" element={<AdminDashboardLayout />}>
+    {/* All dashboard pages go here — they’ll render inside <Outlet /> */}
+    
+    {/* Master Entry */}
+    <Route path="createadmin" element={<Register />} />
+    <Route path="usercreation" element={<UserCreation />} />
+    <Route path="officelevel" element={<OfficeLevel />} />
+    <Route path="bankmaster" element={<BankMaster />} />
+    <Route path="basedepartment" element={<BaseDepartment />} />
+    <Route path="designation" element={<DesignationMaster />} />
+    <Route path="districtsnew" element={<DistrictsNew />} />
+    <Route path="division" element={<Division />} />
+    <Route path="employee" element={<Employee />} />
+    <Route path="financialyear" element={<FinancialYear />} />
+    <Route path="newspaper" element={<NewsPaper />} />
+    <Route path="office" element={<Office />} />
+    <Route path="officofficer" element={<OfficeOfficer />} />
+    <Route path="officer" element={<Officer />} />
+    <Route path="officerlevel" element={<OfficerLevel />} />
+    <Route path="ratecategory" element={<RateCategory />} />
+    <Route path="taxmaster" element={<TaxMasterForm />} />
+    <Route path="unitconvert" element={<UnitConvert />} />
+    <Route path="unitmaster" element={<UnitMaster />} />
+    <Route path="uploadcategory" element={<UploadCategory />} />
+    <Route path="uploadfileextension" element={<UploadFileExtension />} />
+    <Route path="uploadfilesize" element={<UploadFileSize />} />
 
-          {/* for creating user */}
-          <Route path="/" element={<AdminDashboardLayout />} />
-
-          {/*---------------------- Master Entry Start --------------------------------*/}
-          <Route path="/createadmin" element={<Register />} />
-          <Route path="/usercreation" element={<UserCreation />} />
-          <Route path="/officelevel" element={<OfficeLevel />} />
-          <Route path="/bankmaster" element={<BankMaster />} />
-          <Route path="/basedepartment" element={<BaseDepartment />} />
-          <Route path="/designation" element={<DesignationMaster />} />
-          <Route path="/districtsnew" element={<DistrictsNew />} />
-          <Route path="/division" element={<Division />} />
-          <Route path="/employee" element={<Employee />} />
-          <Route path="/financialyear" element={<FinancialYear />} />
-          <Route path="/newspaper" element={<NewsPaper />} />
-          <Route path="/office" element={<Office />} />
-          <Route path="/officofficer" element={<OfficeOfficer />} />
-          <Route path="/officer" element={<Officer />} />
-          <Route path="/officerlevel" element={<OfficerLevel />} />
-          <Route path="/ratecategory" element={<RateCategory />} />
-          <Route path="/taxmaster" element={<TaxMasterForm />} />
-          <Route path="/unitconvert" element={<UnitConvert />} />
-          <Route path="/unitmaster" element={<UnitMaster />} />
-          <Route path="/uploadcategory" element={<UploadCategory />} />
-          <Route path="/uploadfileextension" element={<UploadFileExtension />} />
-          <Route path="/uploadfilesize" element={<UploadFileSize />} />
-          {/* -------------------------------Master Entry End -----------------------------------*/}
-
-          {/* -------------------EM Master Entry Start---------------------------------- */}
-          <Route path="jobtype" element={<JobType />} />
-          <Route path="jobunit" element={<JobUnit />} />
-          <Route path="/mapjobtypeproductiontype"element={<MapJobTypeProductionType />}/>
-          <Route path="/mapvendorcategory" element={<MapVendorCategory />} />
-          <Route path="/mapvendorgroup" element={<MapVendorGroup />} />
-          <Route path="/mediatype" element={<MediaType />} />
-          <Route path="/productiontype" element={<ProductionType />} />
-          <Route path="/ratecalculationon" element={<RateCalculationOn />} />
-          <Route path="/ratetype" element={<RateType />} />
-          <Route path="/ratetypeflag" element={<RateTypeFlag />} />
-          <Route path="/timeband" element={<TimeBand />} />
-          <Route path="/vendor" element={<Vendor />} />
-          <Route path="/vendorcategory" element={<VendorCategory />} />
-          <Route path="/vendorgroup" element={<VendorGroup />} />
-          <Route path="/vendorsearchcategory"element={<VendorSearchCategory />}/>
-          <Route path="/worktype" element={<WorkType />} />
-          <Route path="/mediaworkitemtype" element={<MediaWorkItemType />} />
-          <Route path="/mapworktypemediatype"element={<MapWorkTypeMediaType />}/>
-          <Route path="/mapworktypejobtype" element={<MapWorkTypeJobType/>}/> 
-        {/*------------------------ EM Master Entry End------------------------------------ */}
-
-
-         </Route>
+    {/* EM Master Entry */}
+    <Route path="jobtype" element={<JobType />} />
+    <Route path="jobunit" element={<JobUnit />} />
+    <Route path="mapjobtypeproductiontype" element={<MapJobTypeProductionType />} />
+    <Route path="mapvendorcategory" element={<MapVendorCategory />} />
+    <Route path="mapvendorgroup" element={<MapVendorGroup />} />
+    <Route path="mediatype" element={<MediaType />} />
+    <Route path="productiontype" element={<ProductionType />} />
+    <Route path="ratecalculationon" element={<RateCalculationOn />} />
+    <Route path="ratetype" element={<RateType />} />
+    <Route path="ratetypeflag" element={<RateTypeFlag />} />
+    <Route path="timeband" element={<TimeBand />} />
+    <Route path="vendor" element={<Vendor />} />
+    <Route path="vendorcategory" element={<VendorCategory />} />
+    <Route path="vendorgroup" element={<VendorGroup />} />
+    <Route path="vendorsearchcategory" element={<VendorSearchCategory />} />
+    <Route path="worktype" element={<WorkType />} />
+    <Route path="mediaworkitemtype" element={<MediaWorkItemType />} />
+    <Route path="mapworktypemediatype" element={<MapWorkTypeMediaType />} />
+    <Route path="mapworktypejobtype" element={<MapWorkTypeJobType />} />
+  </Route>
+</Route>
 
       </Routes>
     </BrowserRouter>
