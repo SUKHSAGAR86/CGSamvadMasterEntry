@@ -41,7 +41,7 @@ const AdminSideNavbar = ({ isCollapsed, toggleSidebar, toggleCollapse }) => {
     "/bankmaster",
     "/basedepartment",
     "/designation",
-    "/districtnew",
+    "/districtsnew",
     "/division",
     "/employee",
     "/finacialyear",
@@ -119,7 +119,7 @@ const AdminSideNavbar = ({ isCollapsed, toggleSidebar, toggleCollapse }) => {
               <NavLink to="/ratecalculationon" className="nav-link text-white">{!isCollapsed && "Rate Calculation On"}</NavLink>
               <NavLink to="/ratetype" className="nav-link text-white">{!isCollapsed && "Rate Type"}</NavLink>
               <NavLink to="/ratetypeflag" className="nav-link text-white">{!isCollapsed && "Rate Type Flag"}</NavLink>
-              <NavLink to="/timebrand" className="nav-link text-white">{!isCollapsed && "Time Brand"}</NavLink>
+              <NavLink to="/timeband" className="nav-link text-white">{!isCollapsed && "Time Brand"}</NavLink>
               <NavLink to="/vendor" className="nav-link text-white">{!isCollapsed && "Vendor"}</NavLink>
               <NavLink to="/vendorcategory" className="nav-link text-white">{!isCollapsed && "Vendor Category"}</NavLink>
               <NavLink to="/vendorgroup" className="nav-link text-white">{!isCollapsed && "Vendor Group"}</NavLink>
@@ -157,7 +157,7 @@ const AdminSideNavbar = ({ isCollapsed, toggleSidebar, toggleCollapse }) => {
               <NavLink to="/basedepartment" className="nav-link text-white">{!isCollapsed && "Base Department"}</NavLink>
 
                 <NavLink to="/designation" className="nav-link text-white">{!isCollapsed && "Designation"}</NavLink>
-              <NavLink to="/districtnew" className="nav-link text-white">{!isCollapsed && "District New"}</NavLink>
+              <NavLink to="/districtsnew" className="nav-link text-white">{!isCollapsed && "Districts New"}</NavLink>
                 <NavLink to="/division" className="nav-link text-white">{!isCollapsed && "Division"}</NavLink>
               <NavLink to="/employee" className="nav-link text-white">{!isCollapsed && "Employee"}</NavLink>
                 <NavLink to="/financialyear" className="nav-link text-white">{!isCollapsed && "Financial Year"}</NavLink>

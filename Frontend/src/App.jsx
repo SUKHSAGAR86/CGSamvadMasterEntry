@@ -49,7 +49,7 @@ import ProductionType from "./Components/EmMasterEntry/ProductionType/Production
 import RateCalculationOn from "./Components/EmMasterEntry/RateCalculationOn/RateCalculatorOn";
 import RateType from "./Components/EmMasterEntry/RateType/RateType";
 import RateTypeFlag from "./Components/EmMasterEntry/RateTypeFlag/RateTypeFlag";
-import TimeBand from "./Components/EmMasterEntry/TimeBrand/TimeBrand";
+import TimeBand from "./Components/EmMasterEntry/TimeBand/TimeBand";
 import Vendor from "./Components/EmMasterEntry/Vendor/Vendor";
 import VendorCategory from "./Components/EmMasterEntry/VendorCategory/VendorCategory";
 import VendorGroup from "./Components/EmMasterEntry/VendorGroup/VendorGroup";
@@ -67,8 +67,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         {/* // Public Routes */}
-
-        <Route path="/loginPage" element={<LoginPage />} />
+        {/* ==========================================test======================== */}
+ <Route path="/loginPage" element={<LoginPage />} />
         {/* <Route path="/" element={<LandingPage />} /> */}
 
         {/* //Grouped Protected Routes */}
@@ -90,7 +90,7 @@ const App = () => {
     <Route path="financialyear" element={<FinancialYear />} />
     <Route path="newspaper" element={<NewsPaper />} />
     <Route path="office" element={<Office />} />
-    <Route path="officofficer" element={<OfficeOfficer />} />
+    <Route path="officeofficer" element={<OfficeOfficer />} />
     <Route path="officer" element={<Officer />} />
     <Route path="officerlevel" element={<OfficerLevel />} />
     <Route path="ratecategory" element={<RateCategory />} />
@@ -124,6 +124,7 @@ const App = () => {
   </Route>
 </Route>
 
+       {/* =====================================test======================= */}
       </Routes>
     </BrowserRouter>
   );
