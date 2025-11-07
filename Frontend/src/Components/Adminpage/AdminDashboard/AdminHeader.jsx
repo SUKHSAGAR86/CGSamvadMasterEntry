@@ -1,27 +1,30 @@
-import React from 'react'
-import { Dropdown } from 'react-bootstrap'
-import { BsBell, BsEnvelope } from 'react-icons/bs'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import { Dropdown } from "react-bootstrap";
+import { BsBell, BsEnvelope } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const AdminHeader = ({ toggleSidebar }) => {
   // Replace with context/Redux if needed
   const user = {
-    name: 'SJ',
-          avatar:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd1Y_LHU5cIbQ1GOxw3x6yJVNv9IiGdsJQqZkFC0BnQBsRzJg2Z1Zg2pddadXpycxaDzo&usqp=CAU",
-   
-  }
+    name: "SJ",
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd1Y_LHU5cIbQ1GOxw3x6yJVNv9IiGdsJQqZkFC0BnQBsRzJg2Z1Zg2pddadXpycxaDzo&usqp=CAU",
+  };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     // TODO: Clear auth tokens or session here
-    navigate('/login')
-  }
+    navigate("/loginpage");
+  };
 
   return (
     <header className="bg-dark  border-bottom sticky-top d-flex align-items-center justify-content-between p-3 px-3 shadow-sm z-3">
       {/* Sidebar Toggle (Mobile) */}
-      <button className="btn btn-outline-secondary d-lg-none" onClick={toggleSidebar}>
+      <button
+        className="btn btn-outline-secondary d-lg-none"
+        onClick={toggleSidebar}
+      >
         ☰
       </button>
 
@@ -48,7 +51,10 @@ const AdminHeader = ({ toggleSidebar }) => {
 
         {/* Profile Dropdown */}
         <Dropdown align="end">
-          <Dropdown.Toggle variant="dark" className="d-flex align-items-center text-white gap-2 border-0 shadow-none">
+          <Dropdown.Toggle
+            variant="dark"
+            className="d-flex align-items-center text-white gap-2 border-0 shadow-none"
+          >
             <img
               src={user.avatar}
               alt="User"
@@ -60,15 +66,19 @@ const AdminHeader = ({ toggleSidebar }) => {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item onClick={() => navigate('/profile')}>Profile</Dropdown.Item>
-            <Dropdown.Item onClick={() => navigate('/settings')}>Settings</Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate("/profile")}>
+              Profile
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate("/settings")}>
+              Settings
+            </Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default AdminHeader
+export default AdminHeader;
