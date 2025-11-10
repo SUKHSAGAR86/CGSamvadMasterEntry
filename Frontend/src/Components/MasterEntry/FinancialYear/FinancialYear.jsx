@@ -124,18 +124,7 @@ const FinancialYear = () => {
           onSubmit={handleSubmit}
           className="border p-4 rounded shadow-sm bg-light"
         >
-          <Form.Group controlId="formSno" className="mb-3">
-            <Form.Label className="fw-bold">
-              S.no <span className="text-danger">*</span>
-            </Form.Label>
-            <Form.Control
-              type="text"
-              name="Sno"
-              value={form.Sno}
-              disabled
-              className="fw-bold"
-            />
-          </Form.Group>
+         
 
           <Form.Group controlId="formFinancialYear" className="mb-3">
             <Form.Label className="fw-bold">

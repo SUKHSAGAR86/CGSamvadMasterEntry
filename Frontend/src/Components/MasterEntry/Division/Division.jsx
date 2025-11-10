@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  Table,
-  Button,
-  Form,
-  Row,
-  Col,
-  Card,
-  Spinner,
-  Modal,
-} from "react-bootstrap";
+import { Table, Button, Form, Spinner, Card, Modal } from "react-bootstrap";
 
 const Division = () => {
   const [divisions, setDivisions] = useState([]);
@@ -52,9 +43,13 @@ const Division = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    // Convert flag dropdown to number
+    const updatedValue = name === "flag" ? Number(value) : value;
+
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: updatedValue,
     }));
   };
 
@@ -88,7 +83,7 @@ const Division = () => {
     setFormData({
       Division_name_Hindi: division.Division_name_Hindi,
       Division_name_English: division.Division_name_English,
-      flag: division.flag,
+      flag: division.flag, // correctly mapped
       Display_order: division.Display_order,
     });
     setEditingId(division.Division_id);
@@ -114,15 +109,12 @@ const Division = () => {
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Body
-          className={`text-center bg-${alert.variant} text-white fw-bold`}
-        >
+        <Modal.Body className={`text-center bg-${alert.variant} text-white fw-bold`}>
           {alert.message}
         </Modal.Body>
       </Modal>
 
       {/* Form Section */}
-
       <Card className="p-4 shadow-sm mb-4">
         <h4 className="mb-3 bg-success-subtle text-center p-2 mb-4">
           {editingId ? "Edit Division" : "Add New Division"}
@@ -155,19 +147,24 @@ const Division = () => {
                 </Form.Group>
               </div>
             </div>
-            <div className="row">
+
+            <div className="row mt-3">
               <div className="col">
                 <Form.Group>
-                  <Form.Label>Flag</Form.Label>
-                  <Form.Control
-                    type="number"
+                  <Form.Label>Status</Form.Label>
+                  <Form.Select
                     name="flag"
                     value={formData.flag}
                     onChange={handleChange}
                     required
-                  />
+                  >
+                    <option value="">Select Status</option>
+                    <option value={1}>Active</option>
+                    <option value={0}>Inactive</option>
+                  </Form.Select>
                 </Form.Group>
               </div>
+
               <div className="col">
                 <Form.Group>
                   <Form.Label>Display Order</Form.Label>
@@ -180,25 +177,26 @@ const Division = () => {
                   />
                 </Form.Group>
               </div>
+
               <div className="d-flex justify-content-center mt-4">
-                <Button type="submit" variant="primary bi-arrow-up-circle-fill">&nbsp;
-                  {editingId ? "Update" : "Submit"}
+                <Button type="submit" variant="primary bi-arrow-up-circle-fill">
+                  &nbsp;{editingId ? "Update" : "Submit"}
                 </Button>
                 {editingId ? (
                   <Button
                     variant="danger"
                     onClick={handleCancel}
                     className="ms-3 fw-bold bg-danger bi-x-circle-fill"
-                  >&nbsp;
-                    Cancel
+                  >
+                    &nbsp;Cancel
                   </Button>
                 ) : (
                   <Button
                     variant="danger"
                     onClick={handleCancel}
                     className="ms-3 bi-x-circle-fill"
-                  >&nbsp;
-                    Clear
+                  >
+                    &nbsp;Clear
                   </Button>
                 )}
               </div>
@@ -208,7 +206,7 @@ const Division = () => {
       </Card>
 
       {/* Table Section */}
-      <Card className="shadow-sm mt-5 text-center ">
+      <Card className="shadow-sm mt-5 text-center">
         <h5 className="mb-3 bg-primary-subtle text-center p-2">
           Division List
         </h5>
@@ -224,7 +222,7 @@ const Division = () => {
                   <th className="bg-secondary">ID</th>
                   <th className="bg-secondary">Hindi Name</th>
                   <th className="bg-secondary">English Name</th>
-                  <th className="bg-secondary">Flag</th>
+                  <th className="bg-secondary">Status</th>
                   <th className="bg-secondary">Display Order</th>
                   <th className="bg-secondary">Actions</th>
                 </tr>
@@ -235,7 +233,7 @@ const Division = () => {
                     <td>{div.Division_id}</td>
                     <td>{div.Division_name_Hindi}</td>
                     <td>{div.Division_name_English}</td>
-                    <td>{div.flag}</td>
+                    <td>{div.flag === 1 ? "Active" : "Inactive"}</td>
                     <td>{div.Display_order}</td>
                     <td>
                       <Button

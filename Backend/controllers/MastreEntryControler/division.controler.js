@@ -1,3 +1,5 @@
+
+
 //---------------------------------Divisions------------------------------------
 const { pool, poolConnect, sql } = require("../../database/dbConfig.js");
 
@@ -33,9 +35,9 @@ const getDivisionById = async (req, res) => {
   }
 };
 
-// Create new division with auto-generated zero-padded ID and Display_order
+// Create new division with auto-generated zero-padded ID but manual Display_order
 const createDivision = async (req, res) => {
-  const { Division_name_Hindi, Division_name_English, flag } = req.body;
+  const { Division_name_Hindi, Division_name_English, flag, Display_order } = req.body;
 
   try {
     await poolConnect;
@@ -47,20 +49,15 @@ const createDivision = async (req, res) => {
     const nextIdInt = (maxIdResult.recordset[0].maxId || 0) + 1;
     const nextId = nextIdInt.toString().padStart(3, "0"); // e.g., "001", "002"
 
-    // Get current max Display_order
-    const maxOrderResult = await pool.request().query(`
-        SELECT ISNULL(MAX(Display_order), 0) AS maxOrder FROM Division
-      `);
-    const nextOrder = maxOrderResult.recordset[0].maxOrder + 1;
-
-    // Insert into Division
+    // Insert with manual Display_order
     await pool
       .request()
       .input("id", sql.VarChar(3), nextId)
       .input("hindi", sql.NVarChar(50), Division_name_Hindi)
       .input("english", sql.VarChar(50), Division_name_English)
       .input("flag", sql.Int, flag)
-      .input("order", sql.Int, nextOrder).query(`
+      .input("order", sql.Int, Display_order)
+      .query(`
           INSERT INTO Division (Division_id, Division_name_Hindi, Division_name_English, flag, Display_order)
           VALUES (@id, @hindi, @english, @flag, @order)
         `);
@@ -68,7 +65,7 @@ const createDivision = async (req, res) => {
     res.status(201).json({
       message: "Division created successfully",
       Division_id: nextId,
-      Display_order: nextOrder,
+      Display_order: Display_order,
     });
   } catch (err) {
     res.status(500).send(err.message);
@@ -90,7 +87,8 @@ const updateDivision = async (req, res) => {
       .input("hindi", sql.NVarChar(50), Division_name_Hindi)
       .input("english", sql.VarChar(50), Division_name_English)
       .input("flag", sql.Int, flag)
-      .input("order", sql.Int, Display_order).query(`
+      .input("order", sql.Int, Display_order)
+      .query(`
           UPDATE Division
           SET Division_name_Hindi = @hindi,
               Division_name_English = @english,

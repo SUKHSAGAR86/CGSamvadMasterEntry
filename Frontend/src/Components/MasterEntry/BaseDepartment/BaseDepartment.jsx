@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
@@ -29,7 +27,11 @@ function BaseDepartment() {
   const [alert, setAlert] = useState({ show: false, message: "", variant: "" });
 
   const getDepartments = async () => {
-    const res = await axios.get("http://localhost:3080/api/basedepartment/get-basedepartment");
+    const res = await axios.get(
+      "http://localhost:3080/api/basedepartment/get-basedepartment"
+    );
+    // const res = await axios.get("/api/basedepartment/get-basedepartment");
+
     setDepartments(res.data);
   };
 
@@ -44,12 +46,14 @@ function BaseDepartment() {
   const validateForm = () => {
     const newErrors = {};
     if (!form.dept_id.trim()) newErrors.dept_id = "Department ID is required.";
-    if (!form.dept_name.trim()) newErrors.dept_name = "Department Name is required.";
+    if (!form.dept_name.trim())
+      newErrors.dept_name = "Department Name is required.";
     if (
       form.Commision_Percentage &&
       (form.Commision_Percentage < 0 || form.Commision_Percentage > 100)
     ) {
-      newErrors.Commision_Percentage = "Commission % must be between 0 and 100.";
+      newErrors.Commision_Percentage =
+        "Commission % must be between 0 and 100.";
     }
     if (
       form.discount_percent &&
@@ -77,10 +81,16 @@ function BaseDepartment() {
     setErrors({});
     try {
       if (editing) {
-        await axios.put(`http://localhost:3080/api/basedepartment/update-basedepartment/${form.dept_id}`, form);
+        await axios.put(
+          `http://localhost:3080/api/basedepartment/update-basedepartment/${form.dept_id}`,
+          form
+        );
         showAlert("Department updated successfully!", "success");
       } else {
-        await axios.post("http://localhost:3080/api/basedepartment/add-basedepartment", form);
+        await axios.post(
+          "http://localhost:3080/api/basedepartment/add-basedepartment",
+          form
+        );
         showAlert("Department added successfully!", "success");
       }
 
@@ -135,14 +145,14 @@ function BaseDepartment() {
         </div>
       )}
 
-      <Container className="my-4">
+      <Container className="">
         <Card className="shadow">
           <Card.Body>
             <h5 className="text-center text-primary mb-5 fw-bold">
-              Department Entry Form
+              Base Department
             </h5>
-            <Row>
-              <Col md={6}>
+            <Row className="pe-4 ps-4">
+              {/* <Col md={6}>
                 <Form.Group className="mb-2">
                   <Form.Label>Department ID <span className="text-danger fw-bold">*</span></Form.Label>
                   <Form.Control
@@ -156,10 +166,13 @@ function BaseDepartment() {
                     {errors.dept_id}
                   </Form.Control.Feedback>
                 </Form.Group>
-              </Col>
+              </Col> */}
               <Col md={6}>
                 <Form.Group className="mb-2">
-                  <Form.Label>Department Name <span className="text-danger fw-bold">*</span></Form.Label>
+                  <Form.Label>
+                    Department Name{" "}
+                    <span className="text-danger fw-bold">*</span>
+                  </Form.Label>
                   <Form.Control
                     name="dept_name"
                     value={form.dept_name}
@@ -226,13 +239,20 @@ function BaseDepartment() {
               </Col>
             </Row>
             <div className="text-center mt-3">
-              <Button variant="primary" onClick={handleSubmit} className="me-2 bi-arrow-up-circle-fill">&nbsp;
+              <Button
+                variant="primary"
+                onClick={handleSubmit}
+                className="me-2 bi-arrow-up-circle-fill"
+              >
+                &nbsp;
                 {editing ? "Update" : "Submit"}
               </Button>
               <Button
-                variant="danger" className="bi-x-circle-fill bg-danger"
+                variant="danger"
+                className="bi-x-circle-fill bg-danger"
                 onClick={editing ? cancelEdit : clearForm}
-              >&nbsp;
+              >
+                &nbsp;
                 {editing ? "Cancel" : "Clear"}
               </Button>
             </div>
@@ -269,10 +289,11 @@ function BaseDepartment() {
                     <td>
                       <Button
                         variant="warning"
-                        size="sm" className="bi bi-pen-fill fw-bold"
+                        size="sm"
+                        className="bi bi-pen-fill fw-bold"
                         onClick={() => handleEdit(dept)}
-                      >&nbsp;
-                        Edit
+                      >
+                        &nbsp; Edit
                       </Button>
                     </td>
                   </tr>
