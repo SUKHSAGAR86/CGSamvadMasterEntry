@@ -463,7 +463,7 @@ const DistrictsNew = () => {
                     {dist.flag === 1 ? (
                       <span className="badge bg-success">Active</span>
                     ) : (
-                      <span className="badge bg-danger">Inactive</span>
+                      <span className="badge bg-secondary">Inactive</span>
                     )}
                   </td>
                   <td>{dist.DisplayOrder}</td>

@@ -233,7 +233,13 @@ const Division = () => {
                     <td>{div.Division_id}</td>
                     <td>{div.Division_name_Hindi}</td>
                     <td>{div.Division_name_English}</td>
-                    <td>{div.flag === 1 ? "Active" : "Inactive"}</td>
+                  <td>
+  <span
+    className={`badge ${div.flag === 1 ? "bg-success" : "bg-secondary"} text-white`}
+  >
+    {div.flag === 1 ? "Active" : "Inactive"}
+  </span>
+</td>
                     <td>{div.Display_order}</td>
                     <td>
                       <Button
